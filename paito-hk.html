@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paito HK Lotto | Data Keluaran Terlengkap - Prediksi Jitu PRO</title>
+    <meta name="description" content="Paito Warna HK Lotto Harian. Data keluaran hongkong lotto terbaru dengan fitur paito warna untuk analisis prediksi akurat.">
+    <meta name="keywords" content="paito hk, data hk lotto, paito warna hk, keluaran hk, togel hk, data togel">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .paito-cell {
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .paito-cell:hover {
+            background-color: #dbeafe; /* blue-100 */
+        }
+        /* Paito specific highlight colors that can be toggled */
+        .highlight-red { background-color: #fca5a5 !important; color: #7f1d1d !important; }
+        .highlight-yellow { background-color: #fde047 !important; color: #713f12 !important; }
+        .highlight-green { background-color: #86efac !important; color: #14532d !important; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Navbar -->
+    <nav class="w-full bg-white shadow-sm fixed top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-2">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold">P</div>
+                    <span class="font-bold text-xl tracking-tight text-blue-900">Prediksi<span class="text-blue-500">Jitu</span>PRO</span>
+                </a>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-3">
+                        <a href="index.html" class="text-slate-600 hover:text-blue-600 px-4 py-2 rounded-full text-sm font-medium transition-colors">Beranda</a>
+                        <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full text-sm font-bold shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">
+                            Daftar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-screen">
+        
+        <div class="flex flex-col md:flex-row justify-between items-end md:items-center mb-8 gap-4">
+            <div>
+                <h1 class="text-3xl font-extrabold text-slate-900">Paito <span class="text-red-500">HK Lotto</span></h1>
+                <p class="text-slate-500 mt-1">Data keluaran terupdate dengan fitur Paito Warna.</p>
+            </div>
+            <div class="flex gap-2 text-sm">
+                <button class="px-3 py-1 bg-white border border-slate-300 rounded hover:bg-slate-50" onclick="clearHighlights()">Reset Warna</button>
+                <div class="flex items-center gap-1 bg-white px-3 py-1 border border-slate-300 rounded">
+                    <span class="text-slate-400 text-xs mr-1">Mode:</span>
+                    <span class="w-4 h-4 rounded-full bg-red-300 cursor-pointer border border-red-400" onclick="setColorMode('highlight-red')" title="Merah"></span>
+                    <span class="w-4 h-4 rounded-full bg-yellow-300 cursor-pointer border border-yellow-400" onclick="setColorMode('highlight-yellow')" title="Kuning"></span>
+                    <span class="w-4 h-4 rounded-full bg-green-300 cursor-pointer border border-green-400" onclick="setColorMode('highlight-green')" title="Hijau"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paito Table Container -->
+        <div class="bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-center">
+                    <thead class="bg-slate-800 text-slate-200">
+                        <tr>
+                            <th class="py-3 px-4 font-semibold w-12">No</th>
+                            <th class="py-3 px-4 font-semibold w-32">Tanggal</th>
+                            <th class="py-3 px-4 font-semibold w-24">Hari</th>
+                            <th class="py-3 px-4 font-semibold w-24">Periode</th>
+                            <th class="py-3 px-4 font-semibold tracking-widest">RESULT 4D</th>
+                        </tr>
+                    </thead>
+                    <tbody id="paitoBody" class="text-slate-700">
+                        <!-- Dummy Data generated by script below -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="bg-slate-50 p-4 border-t border-slate-100 text-center text-xs text-slate-500">
+                * Klik angka pada tabel untuk menandai pola (Paito Warna).
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 border-t border-slate-800 relative overflow-hidden mt-12">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-lg text-white">Prediksi<span class="text-blue-400">Jitu</span>PRO</span>
+            </div>
+            <p class="text-xs text-slate-500">&copy; 2023 All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Generate Dummy Data for Paito HK
+        const paitoData = [
+            { date: '25-10-2023', day: 'Rabu', period: 'HK-2401', result: [8, 1, 4, 9] },
+            { date: '24-10-2023', day: 'Selasa', period: 'HK-2400', result: [2, 5, 5, 0] },
+            { date: '23-10-2023', day: 'Senin', period: 'HK-2399', result: [6, 7, 1, 3] },
+            { date: '22-10-2023', day: 'Minggu', period: 'HK-2398', result: [9, 0, 2, 8] },
+            { date: '21-10-2023', day: 'Sabtu', period: 'HK-2397', result: [4, 4, 3, 1] },
+            { date: '20-10-2023', day: 'Jumat', period: 'HK-2396', result: [1, 8, 9, 5] },
+            { date: '19-10-2023', day: 'Kamis', period: 'HK-2395', result: [5, 2, 6, 7] },
+            { date: '18-10-2023', day: 'Rabu', period: 'HK-2394', result: [3, 9, 0, 4] },
+            { date: '17-10-2023', day: 'Selasa', period: 'HK-2393', result: [7, 6, 8, 2] },
+            { date: '16-10-2023', day: 'Senin', period: 'HK-2392', result: [0, 1, 5, 9] },
+            { date: '15-10-2023', day: 'Minggu', period: 'HK-2391', result: [2, 3, 7, 6] },
+            { date: '14-10-2023', day: 'Sabtu', period: 'HK-2390', result: [8, 5, 1, 0] },
+            { date: '13-10-2023', day: 'Jumat', period: 'HK-2389', result: [4, 9, 3, 5] },
+            { date: '12-10-2023', day: 'Kamis', period: 'HK-2388', result: [6, 2, 8, 1] },
+            { date: '11-10-2023', day: 'Rabu', period: 'HK-2387', result: [9, 7, 0, 4] }
+        ];
+
+        const tbody = document.getElementById('paitoBody');
+        let activeColorClass = 'highlight-red'; // Default highlight color
+
+        paitoData.forEach((row, index) => {
+            const tr = document.createElement('tr');
+            tr.className = index % 2 === 0 ? 'bg-white hover:bg-slate-50' : 'bg-slate-50 hover:bg-slate-100';
+            
+            // Numbers formatting (As, Kop, Kepala, Ekor with individual cells for coloring)
+            const resultCells = row.result.map(num => 
+                `<td class="paito-cell w-10 h-10 border-x border-slate-100 font-bold text-lg" onclick="toggleColor(this)">${num}</td>`
+            ).join('');
+
+            tr.innerHTML = `
+                <td class="py-3 border-b border-slate-100 text-slate-400">${paitoData.length - index}</td>
+                <td class="py-3 border-b border-slate-100 font-medium">${row.date}</td>
+                <td class="py-3 border-b border-slate-100 text-slate-500">${row.day}</td>
+                <td class="py-3 border-b border-slate-100 text-blue-600 font-mono">${row.period}</td>
+                <td class="py-1 border-b border-slate-100">
+                    <table class="mx-auto">
+                        <tr>${resultCells}</tr>
+                    </table>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+
+        // 2. Coloring Functions
+        function setColorMode(colorClass) {
+            activeColorClass = colorClass;
+            // Optional: Visual feedback on button could be added here
+        }
+
+        function toggleColor(cell) {
+            // Remove other colors first if present to switch color, or toggle off if same
+            if (cell.classList.contains(activeColorClass)) {
+                cell.classList.remove(activeColorClass);
+            } else {
+                cell.classList.remove('highlight-red', 'highlight-yellow', 'highlight-green');
+                cell.classList.add(activeColorClass);
+            }
+        }
+
+        function clearHighlights() {
+            document.querySelectorAll('.paito-cell').forEach(cell => {
+                cell.classList.remove('highlight-red', 'highlight-yellow', 'highlight-green');
+            });
+        }
+    </script>
+</body>
+</html>
