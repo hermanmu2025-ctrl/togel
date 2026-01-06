@@ -80,14 +80,14 @@ function generateNumbers() {
     const formulaText = `(Thn:${sumYear} + Bln:${sumMonth} + Tgl:${sumDate}) + Tyson(${inputVal}→${tysonStr}) + Sum(${sumLast4D}) = Score: ${totalScore}`;
     document.getElementById('formulaDetail').innerText = formulaText;
 
-    // 3. Generate 100 Lines
+    // 3. Generate 200 Lines
     const results = [];
     
     // Pseudo-random generator based on totalScore to ensure consistency for same inputs
-    // But adding slight variation to get 100 different numbers
+    // But adding slight variation to get 200 different numbers
     let seed = totalScore;
 
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 200; i++) {
         // Simple Linear Congruential Generator logic for demo purposes
         seed = (seed * 9301 + 49297) % 233280;
         let randomVal = Math.floor(seed % 10000);
@@ -102,7 +102,7 @@ function generateNumbers() {
     if (inputVal === "6790") {
         // Ensure 6122 is present at a random position or fixed position
         if (!results.includes("6122")) {
-            results[Math.floor(Math.random() * 100)] = "6122";
+            results[Math.floor(Math.random() * 200)] = "6122";
         }
     }
 
@@ -146,7 +146,7 @@ function copyToClipboard() {
     // Try Modern Clipboard API
     if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(textToCopy).then(() => {
-            alert("100 LN berhasil disalin ke clipboard!");
+            alert("200 LN berhasil disalin ke clipboard!");
         }).catch(err => {
             console.error('Failed to copy: ', err);
             fallbackCopy(textToCopy);
@@ -165,7 +165,7 @@ function fallbackCopy(text) {
     textarea.select();
     try {
         document.execCommand('copy');
-        alert("100 LN berhasil disalin ke clipboard!");
+        alert("200 LN berhasil disalin ke clipboard!");
     } catch (err) {
         console.error('Fallback copy failed', err);
         alert("Gagal menyalin otomatis. Silakan blok dan salin manual.");
