@@ -61,6 +61,23 @@
             <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">
                 Generator Angka <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">4D Presisi Tinggi</span>
             </h1>
+            
+            <!-- Menu Links Added as Requested -->
+            <div class="flex flex-wrap justify-center gap-3 mb-6 mt-2">
+                <a href="#" class="group flex items-center gap-2 px-5 py-2 bg-white border border-slate-200 rounded-full text-sm font-semibold text-slate-600 hover:text-blue-600 hover:border-blue-400 shadow-sm hover:shadow-md transition-all duration-300">
+                    <span class="w-2 h-2 rounded-full bg-red-500 group-hover:animate-pulse"></span>
+                    Paito HK Lotto
+                </a>
+                <a href="#" class="group flex items-center gap-2 px-5 py-2 bg-white border border-slate-200 rounded-full text-sm font-semibold text-slate-600 hover:text-blue-600 hover:border-blue-400 shadow-sm hover:shadow-md transition-all duration-300">
+                    <span class="w-2 h-2 rounded-full bg-yellow-500 group-hover:animate-pulse"></span>
+                    Paito Sdy Lotto
+                </a>
+                <a href="#" class="group flex items-center gap-2 px-5 py-2 bg-white border border-slate-200 rounded-full text-sm font-semibold text-slate-600 hover:text-blue-600 hover:border-blue-400 shadow-sm hover:shadow-md transition-all duration-300">
+                    <span class="w-2 h-2 rounded-full bg-green-500 group-hover:animate-pulse"></span>
+                    Paito Sgp Poll
+                </a>
+            </div>
+
             <p class="text-lg text-slate-600 max-w-2xl mx-auto">
                 Sistem analisis otomatis menggabungkan algoritma Tyson, Data Kalender (Hari, Bulan, Tahun), dan Statistik Keluaran Terakhir untuk menghasilkan 200 LN Angka Jitu.
             </p>
