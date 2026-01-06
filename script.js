@@ -80,14 +80,14 @@ function generateNumbers() {
     const formulaText = `(Thn:${sumYear} + Bln:${sumMonth} + Tgl:${sumDate}) + Tyson(${inputVal}→${tysonStr}) + Sum(${sumLast4D}) = Score: ${totalScore}`;
     document.getElementById('formulaDetail').innerText = formulaText;
 
-    // 3. Generate 50 Lines
+    // 3. Generate 100 Lines
     const results = [];
     
     // Pseudo-random generator based on totalScore to ensure consistency for same inputs
-    // But adding slight variation to get 50 different numbers
+    // But adding slight variation to get 100 different numbers
     let seed = totalScore;
 
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 100; i++) {
         // Simple Linear Congruential Generator logic for demo purposes
         seed = (seed * 9301 + 49297) % 233280;
         let randomVal = Math.floor(seed % 10000);
@@ -102,7 +102,7 @@ function generateNumbers() {
     if (inputVal === "6790") {
         // Ensure 6122 is present at a random position or fixed position
         if (!results.includes("6122")) {
-            results[Math.floor(Math.random() * 50)] = "6122";
+            results[Math.floor(Math.random() * 100)] = "6122";
         }
     }
 
@@ -127,4 +127,48 @@ function generateNumbers() {
     document.getElementById('resultSection').classList.remove('hidden');
     // Scroll to results
     document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth' });
+}
+
+// --- Copy Logic ---
+function copyToClipboard() {
+    const grid = document.getElementById('numbersGrid');
+    // Collect all numbers
+    const numbers = Array.from(grid.children).map(div => div.innerText);
+    
+    if (numbers.length === 0) {
+        alert("Belum ada angka untuk disalin! Harap generate terlebih dahulu.");
+        return;
+    }
+
+    // Join with spaces for easy reading/pasting
+    const textToCopy = numbers.join(' ');
+    
+    // Try Modern Clipboard API
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            alert("100 LN berhasil disalin ke clipboard!");
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+            fallbackCopy(textToCopy);
+        });
+    } else {
+        fallbackCopy(textToCopy);
+    }
+}
+
+function fallbackCopy(text) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.left = '-9999px';
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+        document.execCommand('copy');
+        alert("100 LN berhasil disalin ke clipboard!");
+    } catch (err) {
+        console.error('Fallback copy failed', err);
+        alert("Gagal menyalin otomatis. Silakan blok dan salin manual.");
+    }
+    document.body.removeChild(textarea);
 }
