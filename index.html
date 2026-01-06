@@ -43,11 +43,13 @@
                     <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold">P</div>
                     <span class="font-bold text-xl tracking-tight text-blue-900">Prediksi<span class="text-blue-500">Jitu</span>PRO</span>
                 </div>
+                <!-- Updated Menu: Login & Daftar -->
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#" class="text-blue-600 font-semibold px-3 py-2 rounded-md text-sm">Beranda</a>
-                        <a href="#guide" class="text-slate-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm transition">Panduan Rumus</a>
-                        <a href="#about" class="text-slate-500 hover:text-blue-600 px-3 py-2 rounded-md text-sm transition">Tentang</a>
+                    <div class="ml-10 flex items-center space-x-3">
+                        <a href="#" class="text-slate-600 hover:text-blue-600 px-4 py-2 rounded-full text-sm font-medium transition-colors">Login</a>
+                        <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full text-sm font-bold shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">
+                            Daftar
+                        </a>
                     </div>
                 </div>
             </div>
@@ -166,33 +168,68 @@
             </div>
         </div>
 
-        <!-- SEO Content Section -->
-        <article id="guide" class="max-w-4xl mx-auto mt-20 prose prose-slate">
-            <h2 class="text-3xl font-bold text-slate-800">Bagaimana Cara Kerja Generator Prediksi Ini?</h2>
-            <p class="text-slate-600 leading-relaxed">
-                Layanan <strong>Generator Prediksi Jitu</strong> ini dirancang khusus untuk para pemain yang membutuhkan analisis data mendalam. Berbeda dengan generator acak biasa, sistem kami menggunakan pendekatan matematis yang kompleks.
-            </p>
-            
-            <div class="grid md:grid-cols-2 gap-8 my-8">
-                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100">
-                    <h3 class="text-xl font-bold text-blue-600 mb-3">⚙️ Rumus Tyson 4D</h3>
-                    <p class="text-sm text-slate-600">Setiap angka keluaran terakhir dipetakan menggunakan tabel konversi Tyson untuk menemukan angka bayangan yang memiliki probabilitas tinggi untuk keluar pada periode berikutnya.</p>
+        <!-- SEO Content & Stylish Guide Section -->
+        <section id="guide" class="max-w-5xl mx-auto mt-24 mb-16">
+            <!-- Intro Text -->
+            <div class="text-center mb-16">
+                <span class="text-blue-600 font-bold tracking-wider uppercase text-xs md:text-sm bg-blue-50 px-3 py-1 rounded-full">Workflow & Method</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mt-4">Panduan Penggunaan Sistem</h2>
+                <p class="text-slate-500 mt-4 max-w-2xl mx-auto leading-relaxed">Ikuti langkah-langkah sederhana di bawah ini untuk menghasilkan prediksi angka presisi tinggi menggunakan kombinasi algoritma kami.</p>
+            </div>
+        
+            <!-- Styled Steps Grid -->
+            <div class="grid md:grid-cols-3 gap-8 mb-20">
+                <!-- Step 1 -->
+                <div class="relative p-8 bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl hover:border-blue-200 transition-all duration-300 group">
+                    <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-blue-500/30 group-hover:scale-110 transition-transform">1</div>
+                    <h3 class="mt-8 text-xl font-bold text-center text-slate-800 mb-3">Konfigurasi Data</h3>
+                    <p class="text-slate-600 text-center text-sm leading-relaxed">
+                        Pilih parameter tanggal prediksi (Hari, Bulan, Tahun). Pastikan tanggal sesuai dengan periode undian yang akan diikuti untuk memastikan akurasi perhitungan kalender Jawa dan Masehi.
+                    </p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-100">
-                    <h3 class="text-xl font-bold text-cyan-600 mb-3">📅 Analisis Waktu</h3>
-                    <p class="text-sm text-slate-600">Sistem memperhitungkan variabel waktu (Hari, Bulan, Tahun) sebagai faktor koreksi. Jumlah nilai tanggal digabungkan dengan result untuk menciptakan pola bilangan yang unik.</p>
+        
+                <!-- Step 2 -->
+                <div class="relative p-8 bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl hover:border-blue-200 transition-all duration-300 group">
+                    <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform">2</div>
+                    <h3 class="mt-8 text-xl font-bold text-center text-slate-800 mb-3">Input Result Terakhir</h3>
+                    <p class="text-slate-600 text-center text-sm leading-relaxed">
+                        Masukkan <strong>4 digit (4D)</strong> angka keluaran dari periode sebelumnya pada kolom input. Sistem otomatis mengonversi angka ini menggunakan <em>Tyson Mapping</em>.
+                    </p>
+                </div>
+        
+                <!-- Step 3 -->
+                <div class="relative p-8 bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl hover:border-blue-200 transition-all duration-300 group">
+                    <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-indigo-500/30 group-hover:scale-110 transition-transform">3</div>
+                    <h3 class="mt-8 text-xl font-bold text-center text-slate-800 mb-3">Generate & Eksekusi</h3>
+                    <p class="text-slate-600 text-center text-sm leading-relaxed">
+                        Klik tombol <strong>Analisis</strong>. Algoritma akan memproses variabel dan menampilkan <strong>200 LN</strong> angka paten siap pasang secara otomatis dalam hitungan detik.
+                    </p>
                 </div>
             </div>
 
-            <h3 class="text-2xl font-bold text-slate-800">Panduan Penggunaan</h3>
-            <ul class="list-disc pl-5 space-y-2 text-slate-600">
-                <li>Pilih tanggal prediksi (biasanya tanggal besok atau hari ini).</li>
-                <li>Masukkan <strong>4 digit (4D)</strong> angka keluaran terakhir pada kotak kecil yang tersedia.</li>
-                <li>Klik tombol <strong>Analisis & Generate</strong>.</li>
-                <li>Sistem akan memproses data: <em>(Jumlah Tahun + Jumlah Bulan + Jumlah Tanggal + Nilai Tyson + Jumlah Digit 4D)</em>.</li>
-                <li>Hasil 200 LN (Line Numbers) akan ditampilkan secara otomatis di bawah.</li>
-            </ul>
-        </article>
+            <!-- Additional Info (Horizontal Cards) -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gradient-to-r from-slate-50 to-white p-6 rounded-xl border border-slate-100 flex gap-4 items-start">
+                    <div class="p-3 bg-blue-100 text-blue-600 rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-800">Rumus Tyson 4D</h4>
+                        <p class="text-sm text-slate-600 mt-1">Metode konversi angka keluaran terakhir untuk menemukan 'angka bayangan' dengan probabilitas tinggi.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-slate-50 to-white p-6 rounded-xl border border-slate-100 flex gap-4 items-start">
+                    <div class="p-3 bg-cyan-100 text-cyan-600 rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-800">Analisis Waktu</h4>
+                        <p class="text-sm text-slate-600 mt-1">Memperhitungkan variabel waktu (Hari, Bulan, Tahun) sebagai faktor koreksi pola bilangan unik.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     </main>
 
@@ -224,7 +261,7 @@
                     <ul class="space-y-4">
                         <li><a href="#" class="text-slate-400 hover:text-blue-400 transition-colors text-sm flex items-center gap-2"><span class="w-1 h-1 bg-blue-500 rounded-full"></span> Beranda</a></li>
                         <li><a href="#guide" class="text-slate-400 hover:text-blue-400 transition-colors text-sm flex items-center gap-2"><span class="w-1 h-1 bg-blue-500 rounded-full"></span> Panduan Rumus</a></li>
-                        <li><a href="#about" class="text-slate-400 hover:text-blue-400 transition-colors text-sm flex items-center gap-2"><span class="w-1 h-1 bg-blue-500 rounded-full"></span> Tentang Kami</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-blue-400 transition-colors text-sm flex items-center gap-2"><span class="w-1 h-1 bg-blue-500 rounded-full"></span> Tentang Kami</a></li>
                     </ul>
                 </div>
 
