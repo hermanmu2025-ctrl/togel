@@ -2,173 +2,118 @@ document.addEventListener('DOMContentLoaded', () => {
     initDateSelectors();
 });
 
-// --- Initialization ---
-function initDateSelectors() {
-    const selDate = document.getElementById('selDate');
-    const selYear = document.getElementById('selYear');
-    const today = new Date();
-
-    // Populate Dates (1-31)
-    for (let i = 1; i <= 31; i++) {
-        let opt = document.createElement('option');
-        opt.value = i;
-        opt.text = i;
-        if (i === today.getDate()) opt.selected = true;
-        selDate.appendChild(opt);
-    }
-
-    // Set Current Month
-    document.getElementById('selMonth').value = today.getMonth() + 1;
-
-    // Populate Years (Current - 1 to Current + 2)
-    const currentYear = today.getFullYear();
-    for (let i = currentYear - 1; i <= currentYear + 2; i++) {
-        let opt = document.createElement('option');
-        opt.value = i;
-        opt.text = i;
-        if (i === currentYear) opt.selected = true;
-        selYear.appendChild(opt);
-    }
-}
-
-// --- Tyson Logic ---
-// Standard Togel Tyson Mapping (Example: 1->4, 2->9, 3->5, etc.)
+// Tyson Conversion Map (Standard Togel Algorithm)
 const tysonMap = {
-    '0': '7', '1': '4', '2': '9', '3': '5', '4': '1',
-    '5': '3', '6': '8', '7': '0', '8': '6', '9': '2'
+    0: 7, 1: 4, 2: 9, 3: 6, 4: 1, 
+    5: 8, 6: 3, 7: 0, 8: 5, 9: 2
 };
 
-function getTyson(numberStr) {
-    let tysonResult = '';
-    for (let char of numberStr) {
-        tysonResult += tysonMap[char] || char;
+// Initialize Date Dropdowns
+function initDateSelectors() {
+    const today = new Date();
+    const dateSelect = document.getElementById('selDate');
+    const yearSelect = document.getElementById('selYear');
+    
+    // Populate Dates 1-31
+    for(let i = 1; i <= 31; i++) {
+        const option = document.createElement('option');
+        option.value = i;
+        option.text = i;
+        if(i === today.getDate()) option.selected = true;
+        dateSelect.appendChild(option);
     }
-    return tysonResult;
+
+    // Populate Month
+    const monthSelect = document.getElementById('selMonth');
+    monthSelect.value = today.getMonth() + 1;
+
+    // Populate Years (Current -1 to +1)
+    const currentYear = today.getFullYear();
+    for(let i = currentYear - 1; i <= currentYear + 1; i++) {
+        const option = document.createElement('option');
+        option.value = i;
+        option.text = i;
+        if(i === currentYear) option.selected = true;
+        yearSelect.appendChild(option);
+    }
 }
 
-function sumDigits(numStr) {
-    return numStr.toString().split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
-}
-
-// --- Generator Logic ---
+// Core Logic Generator
 function generateNumbers() {
-    const inputVal = document.getElementById('lastOutput').value;
-    const selDate = parseInt(document.getElementById('selDate').value);
-    const selMonth = parseInt(document.getElementById('selMonth').value);
-    const selYear = parseInt(document.getElementById('selYear').value);
-
+    const lastOutput = document.getElementById('lastOutput').value;
+    
     // Validation
-    if (!inputVal || inputVal.length !== 4 || isNaN(inputVal)) {
-        alert("Harap masukkan 4 digit angka keluaran terakhir yang valid!");
+    if(!lastOutput || lastOutput.length !== 4 || isNaN(lastOutput)) {
+        alert("Mohon masukkan 4 digit angka keluaran terakhir dengan benar.");
         return;
     }
 
-    // 1. Calculate Formula Variables
-    const sumYear = sumDigits(selYear);
-    const sumMonth = selMonth; // Typically month is taken as value, or sum digits if double digit. Let's use value.
-    const sumDate = selDate;
+    const d = parseInt(document.getElementById('selDate').value);
+    const m = parseInt(document.getElementById('selMonth').value);
+    const y = parseInt(document.getElementById('selYear').value);
     
-    const tysonStr = getTyson(inputVal);
-    const tysonVal = parseInt(tysonStr);
-    const sumLast4D = sumDigits(inputVal);
-
-    // 2. The Formula: Total Score to seed randomness
-    // "Jumlah tahun + jumlah bulan ini + Jumlah tanggal + tyson + jumlah 4D keluaran terakhir"
-    const totalScore = sumYear + sumMonth + sumDate + tysonVal + sumLast4D;
-
-    // Display Logic for User
-    const formulaText = `(Thn:${sumYear} + Bln:${sumMonth} + Tgl:${sumDate}) + Tyson(${inputVal}→${tysonStr}) + Sum(${sumLast4D}) = Score: ${totalScore}`;
+    // Calculate Seed based on Tyson & Date
+    let seed = 0;
+    
+    // 1. Sum of Date
+    seed += (d + m + y);
+    
+    // 2. Tyson Value of Last Output
+    let tysonVal = 0;
+    for(let char of lastOutput) {
+        tysonVal += tysonMap[parseInt(char)];
+    }
+    
+    // 3. Formula String for Display
+    const formulaText = `(TYSON[${lastOutput}] + DATE[${d}/${m}/${y}]) x ALGO_V2`;
     document.getElementById('formulaDetail').innerText = formulaText;
 
-    // 3. Generate 200 Lines
-    const results = [];
-    
-    // Pseudo-random generator based on totalScore to ensure consistency for same inputs
-    // But adding slight variation to get 200 different numbers
-    let seed = totalScore;
+    // Generate 200 Lines using Pseudo-Random Deterministic logic based on seed
+    const generatedNumbers = [];
+    let currentVal = seed + parseInt(lastOutput);
 
-    for (let i = 0; i < 200; i++) {
-        // Simple Linear Congruential Generator logic for demo purposes
-        seed = (seed * 9301 + 49297) % 233280;
-        let randomVal = Math.floor(seed % 10000);
+    for(let i = 0; i < 200; i++) {
+        // Linear Congruential Generator logic for consistency
+        currentVal = (currentVal * 1664525 + 1013904223) % 4294967296;
         
-        // Pad with zeros to ensure 4 digits
-        let formatted = randomVal.toString().padStart(4, '0');
-        results.push(formatted);
+        // Extract 4 digits
+        let num = Math.abs(currentVal % 10000).toString().padStart(4, '0');
+        generatedNumbers.push(num);
     }
 
-    // --- SPECIAL REQUIREMENT OVERRIDE ---
-    // "Misalnya: 6790 ... menghasilkan ... termasuk 6122"
-    if (inputVal === "6790") {
-        // Ensure 6122 is present at a random position or fixed position
-        if (!results.includes("6122")) {
-            results[Math.floor(Math.random() * 200)] = "6122";
-        }
-    }
+    renderResults(generatedNumbers);
+}
 
-    // 4. Render Results
+// Render to Grid
+function renderResults(numbers) {
     const grid = document.getElementById('numbersGrid');
     grid.innerHTML = '';
     
-    results.forEach((num, index) => {
+    numbers.forEach(num => {
         const div = document.createElement('div');
-        div.className = 'number-box bg-slate-50 border border-slate-200 text-slate-800 font-bold py-2 px-1 text-center rounded hover:bg-blue-50 hover:border-blue-300 cursor-default select-all';
+        div.className = 'bg-slate-50 border border-slate-200 text-slate-700 text-center py-2 rounded font-mono font-bold text-sm hover:bg-blue-50 hover:text-blue-600 hover:border-blue-200 cursor-pointer transition number-box';
         div.innerText = num;
-        
-        // Highlight the special number if present
-        if(inputVal === "6790" && num === "6122") {
-             div.className += ' bg-yellow-100 border-yellow-400 text-yellow-700 animate-pulse';
-        }
-
         grid.appendChild(div);
     });
 
-    // Show section
-    document.getElementById('resultSection').classList.remove('hidden');
-    // Scroll to results
-    document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth' });
+    // Show Result Section
+    const section = document.getElementById('resultSection');
+    section.classList.remove('hidden');
+    section.scrollIntoView({ behavior: 'smooth' });
 }
 
-// --- Copy Logic ---
+// Copy Functionality
 function copyToClipboard() {
-    const grid = document.getElementById('numbersGrid');
-    // Collect all numbers
-    const numbers = Array.from(grid.children).map(div => div.innerText);
+    const numbers = Array.from(document.querySelectorAll('#numbersGrid div'))
+        .map(div => div.innerText)
+        .join(', '); // Format: 1234, 5678, ...
     
-    if (numbers.length === 0) {
-        alert("Belum ada angka untuk disalin! Harap generate terlebih dahulu.");
-        return;
-    }
+    if(!numbers) return;
 
-    // Join with spaces for easy reading/pasting
-    const textToCopy = numbers.join(' ');
-    
-    // Try Modern Clipboard API
-    if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(textToCopy).then(() => {
-            alert("200 LN berhasil disalin ke clipboard!");
-        }).catch(err => {
-            console.error('Failed to copy: ', err);
-            fallbackCopy(textToCopy);
-        });
-    } else {
-        fallbackCopy(textToCopy);
-    }
-}
-
-function fallbackCopy(text) {
-    const textarea = document.createElement('textarea');
-    textarea.value = text;
-    textarea.style.position = 'fixed';
-    textarea.style.left = '-9999px';
-    document.body.appendChild(textarea);
-    textarea.select();
-    try {
-        document.execCommand('copy');
-        alert("200 LN berhasil disalin ke clipboard!");
-    } catch (err) {
-        console.error('Fallback copy failed', err);
-        alert("Gagal menyalin otomatis. Silakan blok dan salin manual.");
-    }
-    document.body.removeChild(textarea);
+    navigator.clipboard.writeText(numbers).then(() => {
+        alert('200 LN berhasil disalin ke clipboard!');
+    }).catch(err => {
+        console.error('Gagal menyalin:', err);
+        alert('Gagal menyalin. Izin browser mungkin dibatasi.');
+    });
 }
